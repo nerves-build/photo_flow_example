@@ -1,0 +1,18 @@
+/* This file is for your main application css. */
+
+
+#places_holder {
+  margin-top: 20px;
+}
+
+.chart_box {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  height: 500px;
+}
+
+.series_box {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  height: 80px;
+}

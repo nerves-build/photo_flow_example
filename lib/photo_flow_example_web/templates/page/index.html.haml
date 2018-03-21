@@ -1,0 +1,34 @@
+
+.row
+  .col-xs-2
+    %a.btn.btn-default#start_button
+      Start Flow
+    #elapsed_secs
+    #places_holder
+  .col-xs-10
+    .row
+      .col-xs-12
+        .chart_box#timeseries
+    .row
+      .col-xs-12
+        .progress{style: "height: 50px;"}
+          .progress-bar.progress-bar-warning.progress-bar-striped#inprogress{style: "width: 0"}
+          .progress-bar.progress-bar-danger#inerror{style: "width: 0"}
+          .progress-bar.progress-bar-success#insuccess{style: "width: 0"}
+.row
+  .col-xs-2
+  .col-xs-10
+    .row
+      %form.form-inline
+        .input-group.xs-3
+          .input-group-addon
+            Total
+          %input.form-control#total_field{type: "text"}
+        .input-group.xs-3
+          .input-group-addon
+            Errors
+          %input.form-control#type_error_field{type: "text"}
+        .input-group.xs-3
+          .input-group-addon
+            Duplicates
+          %input.form-control#dup_error_field{type: "text"}
