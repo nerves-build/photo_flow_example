@@ -26,14 +26,16 @@ config :photo_flow_example, PhotoFlowExampleWeb.Endpoint,
 
 config :logger, :console, level: :info, format: "[$level] $message\n"
 
+config :porcelain, :goon_driver_path, "~/bin/goon" |> Path.expand()
+
 config :photo_flow_example, PhotoFlowExample,
-  scanned_folder: "SOURCE_DIR",
-  image_destination: "DESTINATION_DIR"
+  scanned_folder: "/Users/steve/Desktop/placed",
+  image_destination: "/Users/steve/Desktop/uploads"
 
 config :phoenix, :stacktrace_depth, 20
 
 config :geonames,
-  username: "GEONAMES_USER_NAME",
+  username: "stwf",
   language: "en"
 
 config :photo_flow_example, PhotoFlowExample.Repo,

@@ -33,7 +33,10 @@ defmodule PhotoFlowExample.Flows.Persister do
   end
 
   def update_photo(%FlowPhoto{photo: photo} = item) do
-    Photos.update_photo(photo, photo_attributes(item))
+    attr = photo_attributes(item)
+      |> place_attributes(item)
+
+    Photos.update_photo(photo, attr)
     item
   end
 
@@ -57,7 +60,7 @@ defmodule PhotoFlowExample.Flows.Persister do
          original_path: path,
          file_info: finfo,
          hash: hash,
-         exif_info: exifs
+         exif_info: exifs,
        }) do
     %{
       name: Path.basename(path),
@@ -73,5 +76,11 @@ defmodule PhotoFlowExample.Flows.Persister do
       lng: exifs.lng,
       exif_data: exifs.exif_data
     }
+  end
+
+  defp place_attributes(attr, %FlowPhoto{place: nil}), do: attr
+
+  defp place_attributes(attr, %FlowPhoto{place: place}) do
+    Map.merge(attr, %{place_id: place.id})
   end
 end

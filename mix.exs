@@ -43,6 +43,7 @@ defmodule PhotoFlowExample.Mixfile do
       {:mariaex, "~> 0.1"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:ocv_photo_analyzer, "~> 1.0"},
       {:flow, "~> 0.11"},
       {:timex, "~> 3.1"},
       {:arc, "~> 0.8.0"},

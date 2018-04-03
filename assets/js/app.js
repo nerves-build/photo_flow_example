@@ -73,7 +73,7 @@ function react_to_payload(pyld) {
     json: pyld.history,
     keys: {
       x: "time",
-      value: ["ingested", "hash", "persist", "finfo", "exif", "geolocate", "geopersist", "completed"],
+      value: ["ingested", "hash", "persist", "finfo", "exif", "analyze", "geolocate", "geopersist", "completed"],
     },
     order: 'desc',
   });
@@ -111,7 +111,7 @@ var lineChart = c3.generate({
       json: [],
       keys: {
         x: "time",
-        value: ["ingested", "hash", "persist", "finfo", "exif", "geolocate", "geopersist", "completed"],
+        value: ["ingested", "hash", "persist", "finfo", "exif", "analyze", "geolocate", "geopersist", "completed"],
       },
       order: 'desc'
     },
