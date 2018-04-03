@@ -5,11 +5,12 @@ defmodule PhotoFlowExample.Flows.FlowPhoto do
             place: nil,
             geodata: nil,
             exif_info: nil,
-            file_info: nil
+            file_info: nil,
+            analysis: nil
 
   alias PhotoFlowExample.Flows.{FlowPhoto, FileInfo, ExifInfo}
   alias PhotoFlowExample.LoudCounter
-  alias PhotoFlowExample.Photos.Photo
+  alias PhotoFlowExample.Photos.{Photo, Analysis}
   alias PhotoFlowExample.Locations.Place
 
   @doc false
@@ -29,6 +30,11 @@ defmodule PhotoFlowExample.Flows.FlowPhoto do
   def add_file_info(%FlowPhoto{} = fp, %FileInfo{} = info) do
     LoudCounter.increment_tag(:finfo, 1)
     %{fp | file_info: info}
+  end
+
+  def add_analysis(%FlowPhoto{} = fp, %Analysis{} = data) do
+    LoudCounter.increment_tag(:analyze, 1)
+    %{fp | analysis: data}
   end
 
   def add_exif_info(%FlowPhoto{} = fp, %ExifInfo{} = info) do

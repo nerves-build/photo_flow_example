@@ -3,6 +3,7 @@ defmodule PhotoFlowExample.Photos.Photo do
   import Ecto.Changeset
   use Arc.Ecto.Schema
   alias PhotoFlowExample.Photos.Photo
+  alias PhotoFlowExample.Photos.Analysis
   alias PhotoFlowExample.Locations.Place
 
   schema "photos" do
@@ -22,7 +23,7 @@ defmodule PhotoFlowExample.Photos.Photo do
     field(:content, PhotoFlowExample.Photos.Content.Type)
 
     belongs_to(:place, Place)
-
+    has_one(:analysis, Analysis)
     timestamps()
   end
 
