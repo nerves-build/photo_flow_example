@@ -1,5 +1,5 @@
 defmodule PhotoFlowExample.Flows.Flow do
-  alias PhotoFlowExample.Flows.{ExifInfo, FileInfo, Hasher, Geonames, FlowPhoto, Persister}
+  alias PhotoFlowExample.Flows.{ExifInfo, FileInfo, Hasher, Geonames, FlowPhoto, Persister, Analyzer}
   alias PhotoFlowExample.FolderScan
 
   def start_flow do
@@ -12,6 +12,7 @@ defmodule PhotoFlowExample.Flows.Flow do
     |> Flow.reject(&Persister.not_persisted(&1))
     |> Flow.map(&FileInfo.execute(&1))
     |> Flow.map(&ExifInfo.execute(&1))
+    |> Flow.map(&Analyzer.execute(&1))
     |> Flow.map(&Geonames.fetch(&1))
     |> Flow.partition(key: fn p -> Geonames.place_key(p) end, stages: 6)
     |> Flow.map(&Geonames.get_or_create_place(&1))
